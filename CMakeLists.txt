@@ -78,3 +78,16 @@ target_link_libraries(benchmark_variants
     edge_ai_variant
     cloud_serving_variant
 )
+
+# Additional variants
+add_subdirectory(variants/scientific_sim)
+add_subdirectory(variants/game_ai)
+
+# Example applications
+add_executable(example_edge_ai
+    examples/variants/example_edge_ai.cu
+)
+target_link_libraries(example_edge_ai
+    gpu_native_room_inference
+    edge_ai_variant
+)
