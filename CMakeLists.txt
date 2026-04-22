@@ -64,3 +64,17 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/gpu-native-room-inference-config-version.cmake
     DESTINATION lib/cmake/gpu-native-room-inference
 )
+
+# Variants for different application domains
+add_subdirectory(variants/edge_ai)
+add_subdirectory(variants/cloud_serving)
+
+# Variant benchmarks
+add_executable(benchmark_variants
+    benchmarks/variants/benchmark_variants_main.cu
+)
+target_link_libraries(benchmark_variants
+    gpu_native_room_inference
+    edge_ai_variant
+    cloud_serving_variant
+)
