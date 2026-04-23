@@ -91,3 +91,25 @@ target_link_libraries(example_edge_ai
     gpu_native_room_inference
     edge_ai_variant
 )
+
+# Complete variant suite
+add_subdirectory(variants/iot_sensors)
+add_subdirectory(variants/robotics)
+add_subdirectory(variants/financial)
+add_subdirectory(variants/healthcare)
+
+# Variant comparison executable
+add_executable(variant_comparison
+    benchmarks/variants/variant_comparison_main.cu
+)
+target_link_libraries(variant_comparison
+    gpu_native_room_inference
+    edge_ai_variant
+    cloud_serving_variant
+    scientific_sim_variant
+    game_ai_variant
+    iot_variant
+    robotics_variant
+    financial_variant
+    healthcare_variant
+)
